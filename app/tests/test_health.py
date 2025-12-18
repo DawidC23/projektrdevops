@@ -1,4 +1,4 @@
-from app.src.main import app
+from src.main import app
 
 def test_health_endpoint():
     client = app.test_client()
