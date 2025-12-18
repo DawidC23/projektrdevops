@@ -1,0 +1,1 @@
+Projekt zawiera kompletną infrastrukturę z Docker Compose, w tym backend Flask, bazę PostgreSQL, reverse proxy NGINX, dwie sieci Dockerowe i seedowanie danych. Pipeline CI buduje obraz i uruchamia testy bez zależności od bazy, a CD jest uruchamiany ręcznie za pomocą workflow_dispatch.
