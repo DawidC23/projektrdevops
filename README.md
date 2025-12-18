@@ -5,7 +5,7 @@ Celem projektu jest demonstracja:
 - automatycznego budowania i testowania (CI),
 - ręcznego wdrażania (CD).
 
--  🧱 Architektura
+-   Architektura
 - **Flask** – aplikacja backendowa
 - **PostgreSQL** – baza danych
 - **NGINX** – reverse proxy
@@ -42,7 +42,7 @@ Dockerfile wykorzystuje **3 etapy**:
 
 Testy są wykonywane **w trakcie budowania obrazu**, co zapewnia poprawność aplikacji już na etapie CI.
 
-## 🔄 Docker Compose
+##  Docker Compose
 
 Uruchamiane serwisy:
 - `app` – Flask backend
