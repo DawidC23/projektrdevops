@@ -23,7 +23,7 @@ jobs:
 
       - name: Pull Docker images
         run: |
-          docker pull ghcr.io/${{ github.repository }}/flask-devops:latest
+          docker pull ghcr.io/dawidc23/projektrdevops/flask-devops:latest
 
       - name: Simulate docker compose pull
         run: |
