@@ -15,12 +15,23 @@ def get_db_connection():
 
 @app.route("/health")
 def health():
+    return jsonify(status="ok")
+
+@app.route("/health/db")
+def health_db():
     try:
-        conn = get_db_connection()
+        conn = psycopg2.connect(
+            host=os.environ.get("DB_HOST"),
+            dbname=os.environ.get("DB_NAME"),
+            user=os.environ.get("DB_USER"),
+            password=os.environ.get("DB_PASSWORD"),
+            connect_timeout=2
+        )
         conn.close()
         return jsonify(status="ok", db="connected")
-    except Exception as e:
-        return jsonify(status="error", message=str(e)), 500
+    except Exception:
+        return jsonify(status="error", db="disconnected"), 500
+
 
 @app.route("/")
 def home():
