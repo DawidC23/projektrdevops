@@ -27,8 +27,26 @@ services:
     networks:
       - back_net
 
+  seed_runner:
+    image: flask-devops
+    container_name: seed_runner
+    command: python seed/run_seed.py
+    environment:
+      DB_HOST: db
+      DB_NAME: devopsdb
+      DB_USER: devops
+      DB_PASSWORD: devops
+    depends_on:
+      - db
+    volumes:
+      - seed_output:/seed_output
+    networks:
+      - back_net
+    restart: "no"
+
 networks:
   back_net:
 
 volumes:
   db_data:
+  seed_output:
