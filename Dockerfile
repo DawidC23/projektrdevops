@@ -12,6 +12,7 @@ COPY app/seed ./seed
 
 # -------- ETAP 2: test --------
 FROM builder AS test
+ENV PYTHONPATH=/app
 RUN pytest tests
 
 # -------- ETAP 3: final --------
