@@ -3,8 +3,6 @@ services:
     build: .
     image: flask-devops
     container_name: flask_app
-    ports:
-      - "5000:5000"
     environment:
       DB_HOST: db
       DB_NAME: devopsdb
@@ -44,9 +42,26 @@ services:
       - back_net
     restart: "no"
 
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+      - nginx_logs:/var/log/nginx
+    depends_on:
+      - app
+    networks:
+      - front_net
+      - back_net
+
 networks:
   back_net:
+  front_net:
 
 volumes:
   db_data:
   seed_output:
+  nginx_logs:
